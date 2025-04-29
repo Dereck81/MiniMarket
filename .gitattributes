@@ -1,0 +1,6 @@
+# Maven Wrapper (Unix)
+/backend/mvnw        text eol=lf
+
+# Maven Wrapper (Windows)
+/backend/*.cmd       text eol=crlf
+

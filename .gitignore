@@ -1,0 +1,52 @@
+# ================================
+# Reglas comunes (todas las carpetas)
+# ================================
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Sistema
+.DS_Store
+*.local
+
+# IDEs (VSCode, IntelliJ, NetBeans, STS…)
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.iws
+*.iml
+*.ipr
+.nb-gradle/
+.nb-dist/
+.nb-project/
+.settings/
+.springBeans
+.sts4-cache
+.apt_generated
+.classpath
+.factorypath
+.project
+
+# ================================
+# Frontend (sólo en ./frontend/)
+# ================================
+/frontend/node_modules/
+/frontend/dist/
+/frontend/dist-ssr/
+/frontend/*.local
+
+# ================================
+# Backend (sólo en ./backend/)
+# ================================
+/backend/HELP.md
+/backend/target/
+/backend/build/
+/backend/.mvn/wrapper/maven-wrapper.jar
+!/backend/**/src/main/**/target/
+/!backend/**/src/test/**/target/
+/!backend/**/src/main/**/build/
+/!backend/**/src/test/**/build/
