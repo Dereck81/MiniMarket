@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import Sidebar from './components/sidebar';
+import Dashboard from './pages/Dashboard';
+import Categorias from './pages/Categoria';
+import Proveedores from './pages/proveedores';
+import MetodosPago from './pages/MetodosPago';
+import Productos from './pages/productos';
+import Pedidos from './pages/Pedidos';
+import Inventario from './pages/Inventario';
+import Usuarios from './pages/Usuarios';
+import Roles from './pages/Roles';
+import Cuenta from './pages/Cuenta';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+
+const App = () => {
+  const [currentPage, setCurrentPage] = useState<string>('pedidos');
+  
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'dashboard':
+        return <Dashboard />;
+      case 'categorias':
+        return <Categorias />;
+      case 'proveedores':
+        return <Proveedores />;
+      case 'metodos-pago':
+        return <MetodosPago />;
+      case 'productos':
+        return <Productos />;
+      case 'pedidos':
+        return <Pedidos />;
+      case 'inventario':
+        return <Inventario />;
+      case 'usuarios':
+        return <Usuarios />;
+      case 'roles':
+        return <Roles />;
+      case 'cuenta':
+        return <Cuenta />;
+      default:
+        return <Dashboard />;
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="flex h-screen bg-gray-100">
+      <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <div className="flex-1 overflow-auto">
+        {renderPage()}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default App
+export default App;

@@ -40,3 +40,21 @@
 .read-the-docs {
   color: #888;
 }
+
+.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+.dark-mode .btn {
+  background-color: #333 !important;
+  color: #f0f0f0 !important;
+}
+
+.dark-mode .bg-success {
+  background-color: #1e3d3b !important;
+}
+
+.dark-mode .bg-info {
+  background-color: #3a5f5e !important;
+}
