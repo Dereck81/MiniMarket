@@ -26,7 +26,11 @@ CREATE TABLE proveedores (
 	estado BOOLEAN NOT NULL,
 	nombre_proveedor VARCHAR(30) NOT NULL,
 	ruc VARCHAR(30) UNIQUE NOT NULL,
-	telefono CHAR(9) DEFAULT NULL
+	telefono CHAR(9) DEFAULT NULL,
+	CONSTRAINT chk_proveedores_telefono CHECK (telefono IS NULL OR telefono REGEXP '^[0-9]{9}$'),
+	CONSTRAINT chk_proveedores_email CHECK (email IS NULL OR email REGEXP '^[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}$'),
+	CONSTRAINT chk_proveedores_telefono_email CHECK (NOT (email IS NULL AND telefono IS NULL)),
+	CONSTRAINT chk_proveedores_ruc CHECK (ruc REGEXP '^[0-9]+$')
 
 );
 
@@ -64,8 +68,11 @@ CREATE TABLE usuarios (
 	fecha_registro DATETIME(6) NOT NULL,
 	imagen VARCHAR(255) NOT NULL,
 	id_rol BIGINT NOT NULL,
-	FOREIGN KEY (id_rol) REFERENCES roles(id_rol)
-
+	FOREIGN KEY (id_rol) REFERENCES roles(id_rol),
+	CONSTRAINT chk_usuario_dni CHECK (dni REGEXP '^[0-9]{8}$'),
+	CONSTRAINT chk_usuario_telefono CHECK (telefono IS NULL OR telefono REGEXP '^[0-9]{9}$'),
+	CONSTRAINT chk_usuario_email CHECK (email REGEXP '^[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}$')
+    
 );
 
 
@@ -77,7 +84,8 @@ CREATE TABLE inventarios (
 	id_producto BIGINT NOT NULL,
 	id_proveedor BIGINT NOT NULL,
 	FOREIGN KEY (id_producto) REFERENCES productos(id_producto),
-	FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor)
+	FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor),
+	CONSTRAINT chk_precio_venta CHECK (precio_venta > 0)
 
 );
 
@@ -88,7 +96,8 @@ CREATE TABLE pedidos (
 	fecha_pedido DATETIME(6) NOT NULL,
 	total DOUBLE NOT NULL,
 	id_usuario BIGINT NOT NULL,
-	FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+	FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+	CONSTRAINT chk_pedidos_total CHECK (total > 0)
 
 );
 
@@ -98,7 +107,8 @@ CREATE TABLE comprobante_venta (
 	fecha_emision DATETIME(6) NOT NULL,
 	total DOUBLE NOT NULL,
 	id_pedido BIGINT NOT NULL,
-	FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido)
+	FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
+	CONSTRAINT chk_comprobante_venta_total CHECK (total > 0)
 
 );
 
@@ -110,7 +120,9 @@ CREATE TABLE detalle_pedido (
 	id_inventario BIGINT NOT NULL,
 	id_pedido BIGINT NOT NULL,
 	FOREIGN KEY (id_inventario) REFERENCES inventarios(id_inventario),
-	FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido)
+	FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
+	CONSTRAINT chk_cantidad CHECK (cantidad > 0),
+	CONSTRAINT chk_precio_unitario CHECK (precio_unitario > 0)
 
 );
 
@@ -122,7 +134,8 @@ CREATE TABLE pagos (
 	id_metodo_pago BIGINT NOT NULL,
 	id_pedido BIGINT NOT NULL,
 	FOREIGN KEY (id_metodo_pago) REFERENCES metodos_pagos(id_metodo_pago),
-	FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido)
+	FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
+	CONSTRAINT chk_monto_pago CHECK (monto_pago > 0)
 
 );
 
