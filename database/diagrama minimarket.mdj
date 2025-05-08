@@ -2514,8 +2514,8 @@
 								"$ref": "AAAAAAGWqgOyJ0Dll5M="
 							},
 							"name": "estado",
-							"type": "TINYINT",
-							"length": "1"
+							"type": "BOOLEAN",
+							"length": 0
 						},
 						{
 							"_type": "ERDColumn",
@@ -2934,8 +2934,8 @@
 								"$ref": "AAAAAAGWqgOyKEEOwMc="
 							},
 							"name": "estado",
-							"type": "TINYINT",
-							"length": "1"
+							"type": "BOOLEAN",
+							"length": 0
 						},
 						{
 							"_type": "ERDColumn",
@@ -3074,8 +3074,8 @@
 								"$ref": "AAAAAAGWqgOyKEEe+LQ="
 							},
 							"name": "estado",
-							"type": "TINYINT",
-							"length": "1"
+							"type": "BOOLEAN",
+							"length": 0
 						},
 						{
 							"_type": "ERDColumn",
@@ -3149,8 +3149,8 @@
 								"$ref": "AAAAAAGWqgOyKEEkaPA="
 							},
 							"name": "estado",
-							"type": "TINYINT",
-							"length": "1"
+							"type": "BOOLEAN",
+							"length": 0
 						},
 						{
 							"_type": "ERDColumn",
@@ -3236,8 +3236,8 @@
 								"$ref": "AAAAAAGWqgOyKEEr9VA="
 							},
 							"name": "estado",
-							"type": "TINYINT",
-							"length": "1"
+							"type": "BOOLEAN",
+							"length": 0
 						},
 						{
 							"_type": "ERDColumn",
@@ -3329,8 +3329,8 @@
 								"$ref": "AAAAAAGWqgOyKEEzXK0="
 							},
 							"name": "estado",
-							"type": "TINYINT",
-							"length": "1"
+							"type": "BOOLEAN",
+							"length": 0
 						},
 						{
 							"_type": "ERDColumn",
@@ -3464,8 +3464,8 @@
 								"$ref": "AAAAAAGWqgOyKEE6vEQ="
 							},
 							"name": "estado",
-							"type": "TINYINT",
-							"length": "1"
+							"type": "BOOLEAN",
+							"length": 0
 						},
 						{
 							"_type": "ERDColumn",
