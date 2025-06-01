@@ -28,7 +28,7 @@ CREATE TABLE proveedores (
 	ruc VARCHAR(30) UNIQUE NOT NULL,
 	telefono CHAR(9) DEFAULT NULL,
 	CONSTRAINT chk_proveedores_telefono CHECK (telefono IS NULL OR telefono REGEXP '^[0-9]{9}$'),
-	CONSTRAINT chk_proveedores_email CHECK (email IS NULL OR email REGEXP '^[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}$'),
+	CONSTRAINT chk_proveedores_email CHECK (email IS NULL OR email REGEXP '^[a-z0-9_]+([.][a-z0-9_]+)*@[a-z0-9_]+([.][a-z0-9_]+)*[.][a-z]{2,5}$'),
 	CONSTRAINT chk_proveedores_telefono_email CHECK (NOT (email IS NULL AND telefono IS NULL)),
 	CONSTRAINT chk_proveedores_ruc CHECK (ruc REGEXP '^[0-9]+$')
 
@@ -71,7 +71,7 @@ CREATE TABLE usuarios (
 	FOREIGN KEY (id_rol) REFERENCES roles(id_rol),
 	CONSTRAINT chk_usuario_dni CHECK (dni REGEXP '^[0-9]{8}$'),
 	CONSTRAINT chk_usuario_telefono CHECK (telefono IS NULL OR telefono REGEXP '^[0-9]{9}$'),
-	CONSTRAINT chk_usuario_email CHECK (email REGEXP '^[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}$')
+	CONSTRAINT chk_usuario_email CHECK (email REGEXP '^[a-z0-9_]+([.][a-z0-9_]+)*@[a-z0-9_]+([.][a-z0-9_]+)*[.][a-z]{2,5}$')
     
 );
 
