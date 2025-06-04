@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 import pe.edu.utp.marketapi.Domain.Inventario.Inventario;
 import pe.edu.utp.marketapi.Domain.Pedido.Pedido;
-import pe.edu.utp.marketapi.Domain.Producto.Producto;
 
 @Data
 @NoArgsConstructor
